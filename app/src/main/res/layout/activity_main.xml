@@ -1,0 +1,73 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class=".MainActivityCustom">
+
+        <import type="com.yusong.baseproject.base.IDataBandingHandler" />
+
+        <import type="com.yusong.baseproject.util.percentUtil.WindowUtil" />
+
+        <variable
+            name="handler"
+            type="IDataBandingHandler" />
+
+        <variable
+            name="windowSize"
+            type="WindowUtil" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ListView
+                    android:id="@+id/list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></ListView>
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ff0000"
+            android:paddingTop="@{windowSize.statusBarHeight}"
+            app:layout_height="@{windowSize.csw*88/windowSize.width+windowSize.statusBarHeight}">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="主页"
+                android:textColor="#00000000"
+                android:textStyle="bold"
+                app:textSize="@{windowSize.csw*36/windowSize.width}" />
+
+            <ImageView
+                android:id="@+id/bt_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="center"
+                android:padding="@{windowSize.csw*20/windowSize.width}"
+                android:src="@mipmap/ic_launcher"
+                android:visibility="gone"
+                app:layout_height="@{windowSize.csw*88/windowSize.width}"
+                app:layout_marginRight="@{windowSize.csw*30/windowSize.width}"
+                app:layout_width="@{windowSize.csw*88/windowSize.width}" />
+        </FrameLayout>
+    </RelativeLayout>
+</layout>
+

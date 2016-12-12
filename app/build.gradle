@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0'
+    }
+}
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.yusong.baseproject.gen'
+    targetGenDir 'src/main/java'
+}
+android {
+    compileSdkVersion 25
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        applicationId "com.yusong.baseproject"
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+
+    //retrfit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    //rxjava
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'io.reactivex:rxandroid:1.0.1'
+    //quickAdapter
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    //MVCHelper
+    //
+    //MVCHelper核心类库
+    compile 'com.shizhefei:MVCHelper-Library:1.0.7'
+    //里面有使用recyclerview，所以需要导入recyclerview
+    compile 'com.android.support:recyclerview-v7:25.0.1'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    //里面包含一个MVCPullrefshHelper 是适配这个控件的 MVCHelper
+    compile 'com.shizhefei:MVCHelper-Pullrefresh:1.0.7'
+    //由于没有找到gradle排至，我自己把它上传到jcenter上
+    compile 'com.shizhefei:pulltorefresh:1.0.1'
+    //里面包含一个MVCSwipeRefreshHelper 是适配这个控件的 MVCHelper
+    compile 'com.shizhefei:MVCHelper-SwipeRefresh:1.0.7'
+    //v4包应该都有导入吧，v7包里面包含v4包
+    //里面包含一个MVCUltraHelper 是适配这个控件的 MVCHelper
+    compile 'com.shizhefei:MVCHelper-UltraRefresh:1.0.7'
+    //这里6月29号目前最新的，要实时关注新版本去秋大的网站上去看
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+
+    compile 'org.greenrobot:greendao:3.0.1'
+    compile 'org.greenrobot:greendao-generator:3.0.0'
+}

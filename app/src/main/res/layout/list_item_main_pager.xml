@@ -1,0 +1,27 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class=".ListItemMainPagerCustom">
+
+        <import type="com.yusong.baseproject.util.percentUtil.WindowUtil" />
+
+        <variable
+            name="windowSize"
+            type="WindowUtil" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_height="@{windowSize.csw*250/windowSize.width}">
+
+        </android.support.v4.view.ViewPager>>
+
+    </LinearLayout>
+</layout>
